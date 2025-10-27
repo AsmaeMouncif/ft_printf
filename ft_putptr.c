@@ -6,7 +6,7 @@
 /*   By: asmounci <asmounci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 12:02:31 by asmounci          #+#    #+#             */
-/*   Updated: 2025/10/27 17:40:55 by asmounci         ###   ########.fr       */
+/*   Updated: 2025/10/27 20:26:11 by asmounci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_puthex(unsigned long n)
 	count = 0;
 	if (n >= 16)
 		count = count + ft_puthex(n / 16);
-	count = count + ft_putchar("0123456789ABCDEF"[n % 16]);
+	count = count + ft_putchar("0123456789abcdef"[n % 16]);
 	return (count);
 }
 
@@ -28,17 +28,12 @@ int	ft_putptr(void *ptr)
 	int				count;
 	unsigned long	address;
 
-	count = 0;
 	address = (unsigned long)ptr;
+	if (address == 0)
+		return (write(1, "(nil)", 5));
+	count = 0;
 	count = count + ft_putchar('0');
 	count = count + ft_putchar('x');
-	if (address == 0)
-	{
-		count = count + ft_putchar('0');
-	}
-	else
-	{
-		count = count + ft_puthex(address);
-	}
+	count = count + ft_puthex(address);
 	return (count);
 }
