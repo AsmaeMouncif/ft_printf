@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asmounci <asmounci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 09:23:40 by asmounci          #+#    #+#             */
-/*   Updated: 2025/10/27 11:12:47 by asmounci         ###   ########.fr       */
+/*   Created: 2025/10/27 10:38:35 by asmounci          #+#    #+#             */
+/*   Updated: 2025/10/27 11:10:45 by asmounci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+int	ft_putnbr(int n)
+{
+	int	count;
 
-int	ft_printf(const char *format, ...);
-int	ft_putchar(int c);
-int	ft_putstr(char *str);
-int	ft_putnbr(int n);
-
-#endif
+	count = 0;
+	if (n == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return (11);
+	}
+	if (n < 0)
+	{
+		count = count + ft_putchar('-');
+		n = -n;
+	}
+	if (n <= 9)
+		count = count + ft_putchar(n + '0');
+	if (n >= 10)
+	{
+		count = count + ft_putnbr(n / 10);
+		count = count + ft_putchar(n % 10 + '0');
+	}
+	return (count);
+}

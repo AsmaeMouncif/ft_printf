@@ -6,7 +6,7 @@
 /*   By: asmounci <asmounci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 09:01:16 by asmounci          #+#    #+#             */
-/*   Updated: 2025/10/27 10:29:39 by asmounci         ###   ########.fr       */
+/*   Updated: 2025/10/27 11:20:22 by asmounci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	ft_printf(const char *format, ...)
 				count = count + ft_putchar(va_arg(args, int));
 			else if (format[i] == 's')
 				count = count + ft_putstr(va_arg(args, char *));
+            else if (format[i] == 'd' || format[i] == 'i')
+                count = count + ft_putnbr(va_arg(args, int));
 		}
 		else
 		{
@@ -43,6 +45,6 @@ int	ft_printf(const char *format, ...)
 
 // int	main(void)
 // {
-// 	ft_printf("%s", "hello");
+// 	ft_printf("%d", 11111);
 // 	return (0);
 // }
