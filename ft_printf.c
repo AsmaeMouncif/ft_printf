@@ -6,7 +6,7 @@
 /*   By: asmounci <asmounci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 09:01:16 by asmounci          #+#    #+#             */
-/*   Updated: 2025/10/27 17:48:29 by asmounci         ###   ########.fr       */
+/*   Updated: 2025/10/27 18:38:56 by asmounci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ int	ft_printf(const char *format, ...)
                 count = count + ft_putnbr_unsigned(va_arg(args, int));
             else if	(format[i] == 'p')
 				count = count + ft_putptr(va_arg(args, void *));
+			else if(format[i] == 'x')
+				count = count + ft_puthex_lower(va_arg(args, int));
+			else if(format[i] == 'X')
+				count = count + ft_puthex_upper(va_arg(args, int));
 		}
 		else
 		{
@@ -46,9 +50,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
-// int	main(void)
-// {
-// 	ft_printf("%p", 9876);
-// 	return (0);
-// }

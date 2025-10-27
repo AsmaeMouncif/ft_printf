@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_puthex_lower.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asmounci <asmounci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 09:23:40 by asmounci          #+#    #+#             */
-/*   Updated: 2025/10/27 18:27:48 by asmounci         ###   ########.fr       */
+/*   Created: 2025/10/27 17:54:00 by asmounci          #+#    #+#             */
+/*   Updated: 2025/10/27 18:01:42 by asmounci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+int	ft_puthex_lower(unsigned int n)
+{
+	int	count;
 
-int	ft_printf(const char *format, ...);
-int	ft_putchar(int c);
-int	ft_putstr(char *str);
-int	ft_putnbr(int n);
-int	ft_putnbr_unsigned(unsigned int n);
-int	ft_putptr(void *ptr);
-int	ft_puthex_upper(unsigned int n);
-int	ft_puthex_lower(unsigned int n);
-
-#endif
+	count = 0;
+	if (n >= 16)
+		count = count + ft_puthex_lower(n / 16);
+	count = count + ft_putchar("0123456789abcdef"[n % 16]);
+	return (count);
+}
