@@ -6,7 +6,7 @@
 /*   By: asmounci <asmounci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 09:01:16 by asmounci          #+#    #+#             */
-/*   Updated: 2025/10/27 20:28:32 by asmounci         ###   ########.fr       */
+/*   Updated: 2025/10/28 15:06:08 by asmounci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	ft_printf(const char *format, ...)
 	va_list	args;
 
 	va_start(args, format);
+	if (format == NULL)
+		return (-1);
 	i = 0;
 	count = 0;
 	while (format[i] != '\0')
