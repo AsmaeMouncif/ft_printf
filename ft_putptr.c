@@ -6,7 +6,7 @@
 /*   By: asmounci <asmounci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 12:02:31 by asmounci          #+#    #+#             */
-/*   Updated: 2025/10/27 20:26:11 by asmounci         ###   ########.fr       */
+/*   Updated: 2025/10/30 09:31:41 by asmounci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	ft_putptr(void *ptr)
 	int				count;
 	unsigned long	address;
 
-	address = (unsigned long)ptr;
-	if (address == 0)
+	if (ptr == NULL)
 		return (write(1, "(nil)", 5));
+	address = (unsigned long)ptr;
 	count = 0;
 	count = count + ft_putchar('0');
 	count = count + ft_putchar('x');
